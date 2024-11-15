@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Web Étudiants</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Lien vers le CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue sur l'application de gestion des étudiants</h1>
+
+        <h2>Ajouter un étudiant</h2>
+        <form id="student-form">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Âge :</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="course">Cursus :</label>
+            <input type="text" id="course" name="course" required>
+
+            <button type="submit">Ajouter l'étudiant</button>
+        </form>
+
+        <h3>Liste des étudiants</h3>
+        <div id="students-list"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById("student-form");
+        const studentsList = document.getElementById("students-list");
+
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            
+            const student = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                course: document.getElementById("course").value,
+            };
+
+            // Envoi des données à l'API
+            const response = await fetch("/add-student", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(student)
+            });
+
+            const result = await response.json();
+
+            // Affichage de l'étudiant ajouté dans la liste
+            const studentElement = document.createElement("p");
+            studentElement.textContent = `${result.student.name}, ${result.student.age} ans, Cursus: ${result.student.course}`;
+            studentsList.appendChild(studentElement);
+
+            // Réinitialiser le formulaire
+            form.reset();
+        });
+    </script>
+</body>
+</html>
