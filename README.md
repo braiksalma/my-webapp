@@ -35,22 +35,23 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["npm", "start"]```
+CMD ["npm", "start"]
 
-b) Construire l'image Docker
+#### b) Construire l'image Docker
 Dans le répertoire contenant le Dockerfile, exécutez :
 
-```
-docker build -t my-webapp .```
+```bash
+docker build -t my-webapp .
 
-c) Tester l'image en local
+#### c) Tester l'image en local
 Lancez le conteneur localement pour vérifier son bon fonctionnement :
-```
-docker run -p 3000:3000 my-webapp```
-2. Déploiement dans Kubernetes
-a) Déploiement de la base de données
+```bash
+docker run -p 3000:3000 my-webapp
+
+### 2. Déploiement dans Kubernetes
+#### a) Déploiement de la base de données
 Créez un fichier deployment-db.yaml avec le contenu suivant pour déployer PostgreSQL dans un Pod Kubernetes :
-```
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -83,9 +84,9 @@ spec:
         persistentVolumeClaim:
           claimName: postgres-pvc```
 
-b) Créer les Secrets et ConfigMaps
-Fichier configmap.yaml :
-```
+#### b) Créer les Secrets et ConfigMaps
+# Fichier configmap.yaml :
+```bash
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -94,9 +95,9 @@ data:
   POSTGRES_DB: mydatabase
   POSTGRES_USER: admin```
 
-Fichier secrets.yaml :
+# Fichier secrets.yaml :
 
-```
+```bash
 apiVersion: v1
 kind: Secret
 metadata:
@@ -106,9 +107,9 @@ data:
   POSTGRES_PASSWORD: YWRtaW4xMjM=  # admin123 encodé en base64```
 
 
-c) Déploiement de l'application web
+#### c) Déploiement de l'application web
 Créez un fichier deployment-web.yaml avec le contenu suivant :
-```
+```bash
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -142,14 +143,14 @@ spec:
               key: POSTGRES_PASSWORD```
 
     
-3. Application des configurations Kubernetes
+### 3. Application des configurations Kubernetes
 Exécutez les commandes suivantes pour appliquer les fichiers de configuration dans Kubernetes :
 
-```
+```bash
 kubectl apply -f deployment-db.yaml
 kubectl apply -f service-db.yaml
 kubectl apply -f deployment-web.yaml
-kubectl apply -f service-web.yaml```
+kubectl apply -f service-web.yaml
 
 
 ## Paramètres de Configuration
