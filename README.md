@@ -21,32 +21,9 @@ Avant de commencer, vous devez vous assurer que les outils suivants sont bien in
 - **Accès à un registre Docker** : pour pousser vos images Docker (Docker Hub, ECR, etc.).
 
 ---
+## Structure du Projet
 
-## *Structure du Projet*
-
-plaintext
-├── client/                    # Code source du frontend (React)
-│   ├── public/                # Contient le fichier index.html
-│   ├── src/                   # Code source React
-│   ├── Dockerfile             # Dockerfile pour conteneuriser le frontend
-│   └── package.json           # Dépendances frontend
-├── server/                    # Code source du backend (Node.js)
-│   ├── routes/                # Routes API pour les étudiants
-│   ├── models/                # Modèle de connexion PostgreSQL
-│   ├── Dockerfile             # Dockerfile pour conteneuriser le backend
-│   └── package.json           # Dépendances backend
-├── kubernetes/                # Configurations Kubernetes
-│   ├── postgres-deployment.yaml
-│   ├── postgres-service.yaml
-│   ├── webapp-db-pvc.yaml
-│   ├── webapp-backend-deployment.yaml
-│   ├── webapp-backend-service.yaml
-│   ├── webapp-frontend-deployment.yaml
-│   ├── webapp-frontend-service.yaml
-└── README.md                  # Ce fichier
-
-
----
+├── client/ # Code source du frontend (React) │ ├── public/ # Contient le fichier index.html │ ├── src/ # Code source React │ ├── Dockerfile # Dockerfile pour conteneuriser le frontend │ └── package.json # Dépendances frontend ├── server/ # Code source du backend (Node.js) │ ├── routes/ # Routes API pour les étudiants │ ├── models/ # Modèle de connexion PostgreSQL │ ├── Dockerfile # Dockerfile pour conteneuriser le backend │ └── package.json # Dépendances backend ├── kubernetes/ # Configurations Kubernetes │ ├── postgres-deployment.yaml │ ├── postgres-service.yaml │ ├── webapp-db-pvc.yaml │ ├── webapp-backend-deployment.yaml │ ├── webapp-backend-service.yaml │ ├── webapp-frontend-deployment.yaml │ ├── webapp-frontend-service.yaml └── README.md 
 
 ## Étapes de Déploiement
 
@@ -62,13 +39,13 @@ cd <nom-du-repo>
 #### b) Construire l'image Docker
 Dans tous les dossiers du projet exécutez ces commandes ci-dessous pour pouvoir construire les images pour le backend et le frontend :
 
-# Construction de l'image du frontend
+Construction de l'image du frontend
 ```bash
 cd client
 docker build -t my-frontend .
 ```
 
-# Construction de l'image du backend
+Construction de l'image du backend
 ```bash
 cd ../server
 docker build -t my-backend .
