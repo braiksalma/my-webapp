@@ -178,10 +178,3 @@ Pour adapter ce projet à d'autres environnements ou configurations spécifiques
 - Changer les images Docker utilisées dans les fichiers YAML pour pointer vers vos propres registres.
 - Ajuster les services Kubernetes pour configurer des ports ou des types d'exposition spécifiques (ClusterIP, NodePort, ou LoadBalancer).
 ```
-
-### Points importants à noter :
-- Ce fichier **README.md** est maintenant en **Markdown** complet, avec des titres et du code formaté pour GitHub.
-- Le code est bien encapsulé avec des triples backticks (```) et des blocs de code spécifiques à chaque type (bash, yaml, dockerfile).
-- Quand vous copiez et collez ce code dans votre fichier `README.md`, cela s'affichera correctement sur GitHub, avec des sections de code bien distinguées et lisibles.
-
-J'espère que cela correspond exactement à ce que vous attendiez !
