@@ -1,6 +1,4 @@
 
-
-```markdown
 # Projet : Déploiement d'une Application Web avec Base de Données sur un Cluster Kubernetes
 
 ## Objectifs
