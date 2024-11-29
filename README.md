@@ -21,9 +21,32 @@ Avant de commencer, vous devez vous assurer que les outils suivants sont bien in
 - **Accès à un registre Docker** : pour pousser vos images Docker (Docker Hub, ECR, etc.).
 
 ---
-## Structure du Projet
 
-├── client/ # Code source du frontend (React) │ ├── public/ # Contient le fichier index.html │ ├── src/ # Code source React │ ├── Dockerfile # Dockerfile pour conteneuriser le frontend │ └── package.json # Dépendances frontend ├── server/ # Code source du backend (Node.js) │ ├── routes/ # Routes API pour les étudiants │ ├── models/ # Modèle de connexion PostgreSQL │ ├── Dockerfile # Dockerfile pour conteneuriser le backend │ └── package.json # Dépendances backend ├── kubernetes/ # Configurations Kubernetes │ ├── postgres-deployment.yaml │ ├── postgres-service.yaml │ ├── webapp-db-pvc.yaml │ ├── webapp-backend-deployment.yaml │ ├── webapp-backend-service.yaml │ ├── webapp-frontend-deployment.yaml │ ├── webapp-frontend-service.yaml └── README.md 
+## *Structure du Projet*
+
+```plaintext
+├── client/                    # Code source du frontend (React)
+│   ├── public/                # Contient le fichier index.html
+│   ├── src/                   # Code source React
+│   ├── Dockerfile             # Dockerfile pour conteneuriser le frontend
+│   └── package.json           # Dépendances frontend
+├── server/                    # Code source du backend (Node.js)
+│   ├── routes/                # Routes API pour les étudiants
+│   ├── models/                # Modèle de connexion PostgreSQL
+│   ├── Dockerfile             # Dockerfile pour conteneuriser le backend
+│   └── package.json           # Dépendances backend
+├── kubernetes/                # Configurations Kubernetes
+│   ├── postgres-deployment.yaml
+│   ├── postgres-service.yaml
+│   ├── webapp-db-pvc.yaml
+│   ├── webapp-backend-deployment.yaml
+│   ├── webapp-backend-service.yaml
+│   ├── webapp-frontend-deployment.yaml
+│   ├── webapp-frontend-service.yaml
+└── README.md                  
+```
+
+---
 
 ## Étapes de Déploiement
 
