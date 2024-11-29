@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+  namespace: default
+  labels:
+    type: local
+    app: postgres
+spec:
+  capacity:
+    storage: 5Gi # Taille du volume persistant
+  accessModes:
+    - ReadWriteOnce # L'accès en lecture/écriture pour un seul pod
+  hostPath:
+    path: "/data/postgres"  # Chemin du répertoire sur l'hôte pour stocker les données PostgreSQL
+    type: DirectoryOrCreate     # Si le répertoire n'existe pas, Kubernetes va le créer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: default
+  labels:
+    app: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

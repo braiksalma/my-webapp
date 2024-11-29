@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-frontend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-frontend
+  template:
+    metadata:
+      labels:
+        app: webapp-frontend
+    spec:
+      containers:
+      - name: webapp-frontend
+        image: idmuriel/my-frontend:latest   # image Docker du frontend React
+        ports:
+        - containerPort: 3000          # Port du frontend React

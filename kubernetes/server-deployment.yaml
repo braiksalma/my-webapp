@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-backend
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-backend
+  template:
+    metadata:
+      labels:
+        app: webapp-backend
+    spec:
+      containers:
+      - name: webapp-backend
+        image: idmuriel/my-backend:latest   # image Docker
+        ports:
+        - containerPort: 8000       
+        env:
+        - name: DB_HOST
+          value: postgres-service   # Nom du service PostgreSQL dans Kubernetes
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: postgres-user   # Correspond au secret pour l'utilisateur dans secrets.yaml
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: postgres-password  # Correspond au secret pour le mot de passe dans secrets.yaml
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secrets
+              key: postgres-database  # Correspond au secret pour le nom de la base de données
+        - name: PORT
+          value: "8000"  

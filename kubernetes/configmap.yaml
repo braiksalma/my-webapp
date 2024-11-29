@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-sql
+  namespace: default
+data:
+  init.sql: |
+    -- Ton fichier SQL ici
+    CREATE DATABASE IF NOT EXISTS school;
+    CREATE TABLE students (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        age INT
+    );
+    INSERT INTO students (name, age) VALUES ('John Doe', 22), ('Jane Smith', 23);
+    -- Ajoute tout le contenu de ton fichier init.sql ici
