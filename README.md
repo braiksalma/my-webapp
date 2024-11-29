@@ -51,3 +51,13 @@ kubectl apply -f deployment-db.yaml
 kubectl apply -f service-db.yaml
 kubectl apply -f deployment-web.yaml
 kubectl apply -f service-web.yaml
+
+
+```dockerfile
+FROM node:16
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
