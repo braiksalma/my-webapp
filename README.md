@@ -35,7 +35,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "start"]. 
 
 #### b) Construire l'image Docker
 Dans le répertoire contenant le Dockerfile, exécutez :
